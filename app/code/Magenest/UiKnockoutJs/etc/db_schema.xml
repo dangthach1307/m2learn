@@ -1,0 +1,49 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- ADD COLUMN TO TABLE QUOTE -->
+    <table name="quote" resource="default">
+        <column xsi:type="varchar" name="delivery_opt" length="255" nullable="false" comment="Delivery Option"/>
+        <column xsi:type="datetime" name="delivery_date" nullable="false" comment="Delivery Date"/>
+    </table>
+    <!-- ADD COLUMN TO TABLE SALES ORDER -->
+    <table name="sales_order" resource="default">
+        <column xsi:type="varchar" name="delivery_opt" length="255" nullable="false" comment="Delivery Option"/>
+        <column xsi:type="datetime" name="delivery_date" nullable="false" comment="Delivery Date"/>
+    </table>
+
+
+    <!-- CREATE CUSTOM TABLE -->
+    <!-- Create Customer Promotion Popup Table -->
+    <table name="magenest_promotion" resource="default" comment="Magenest group customer promotion popup">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Primary Key"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Promotion Title"/>
+        <column xsi:type="text" name="content" nullable="true" comment="Promotion content"/>
+        <column xsi:type="smallint" name="status" nullable="false" default="1" comment="Status"/>
+        <column xsi:type="int" name="group_customer_id" unsigned="true" nullable="false" comment="Group customer ID"/>
+        <constraint xsi:type="primary" referenceId="PK_MAGENEST_PROMOTION_ID">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="FK_MAGENEST_PROMOTION_GROUP_CUSTOMER_ID"
+                    table="magenest_promotion"
+                    column="group_customer_id"
+                    referenceTable="customer_group"
+                    referenceColumn="customer_group_id"
+                    onDelete="CASCADE"/>
+    </table>
+
+
+    <!-- Create Banner Table -->
+    <table name="magenest_banner" resource="default" comment="Magenest Banner">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Primary Key"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Banner name"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Banner Title"/>
+        <column xsi:type="text" name="content" nullable="true" comment="Banner content"/>
+        <column xsi:type="text" name="link" nullable="true" comment="Banner link"/>
+        <column xsi:type="varchar" name="image" length="255" nullable="true" comment="Banner image"/>
+        <column xsi:type="smallint" name="enable" nullable="false" default="1" comment="Enable"/>
+        <constraint xsi:type="primary" referenceId="PK_MAGENEST_BANNER_ID">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

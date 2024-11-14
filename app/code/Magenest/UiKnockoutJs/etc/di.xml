@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+  ~
+  ~ Copyright © Magento, Inc. All rights reserved.
+  ~ See COPYING.txt for license details.
+  ~
+  ~ Created By: Thach The Dang.
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--  BEGIN For Saving Quote Data  -->
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="save_delivery_option" type="Magenest\UiKnockoutJs\Plugin\Quote\SaveDeliveryOption"/>
+    </type>
+    <type name="Magenest\UiKnockoutJs\Plugin\Quote\SaveDeliveryOption">
+        <arguments>
+            <argument name="timezone" xsi:type="object">Magento\Framework\Stdlib\DateTime\TimezoneInterface</argument>
+        </arguments>
+    </type>
+    <!--  END For Saving Quote Data  -->
+
+    <!-- BEGIN For Banner Manager   -->
+    <virtualType name="MagenestBannerGridFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter
+                </item>
+                <item name="fulltext" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MagenestBannerGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">
+                Magenest\UiKnockoutJs\Model\ResourceModel\Banner\Collection
+            </argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MagenestBannerGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\UiKnockoutJs\Model\ResourceModel\Banner\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_banner</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\UiKnockoutJs\Model\ResourceModel\Banner</argument>
+            <argument name="eventPrefix" xsi:type="string">magenest_bai10_banner_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">magenest_banner_grid_collection</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_bai10_banner_listing_data_source" xsi:type="string">
+                    Magenest\UiKnockoutJs\Model\ResourceModel\Banner\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!--  END For Banner Manager  -->
+
+    <!--  BEGIN For Popup Manager  -->
+    <virtualType name="MagenestPopupGridFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MagenestPopupGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Magenest\UiKnockoutJs\Model\ResourceModel\GPromotion\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MagenestPopupGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\UiKnockoutJs\Model\ResourceModel\GPromotion\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_promotion</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\UiKnockoutJs\Model\ResourceModel\GPromotion</argument>
+            <argument name="eventPrefix" xsi:type="string">magenest_bai10_popup_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">magenest_popup_grid_collection</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_bai10_popup_listing_data_source" xsi:type="string">Magenest\UiKnockoutJs\Model\ResourceModel\GPromotion\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--  END For Popup Manager  -->
+</config>

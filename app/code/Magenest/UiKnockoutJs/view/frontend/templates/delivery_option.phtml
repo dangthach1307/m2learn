@@ -1,0 +1,63 @@
+<div class="field delivery-option">
+    <label for="delivery_opt"><?php echo __('Lựa chọn thời gian giao hàng') ?></label>
+    <select name="delivery_opt" id="delivery_opt">
+        <?php foreach ($block->getDeliveryOptions() as $value => $label): ?>
+            <option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<div class="field custom-date" style="display:none;">
+    <label for="delivery_date"><?= $block->escapeHtml(__('Chọn ngày giao hàng')) ?></label>
+    <input type="date" id="delivery_date" name="delivery_date">
+</div>
+
+<script>
+    require(['jquery', 'mage/url'], function($, url) {
+        $(document).ready(function() {
+            var $deliveryOption = $('#delivery_opt');
+            var $customDateField = $('.custom-date');
+            var $addToCartForm = $('#product_addtocart_form');
+
+            $deliveryOption.on('change', function() {
+                if ($(this).val() === 'custom') {
+                    $customDateField.show();
+                } else {
+                    $customDateField.hide();
+                }
+            });
+
+            // Thay thế sự kiện submit bằng click vào nút "Add to Cart"
+            $('button[type="submit"]', $addToCartForm).on('click', function(e) {
+                e.preventDefault();
+                var form = $addToCartForm[0];
+                var formData = new FormData(form);
+                formData.append('delivery_opt', $deliveryOption.val());
+                if ($deliveryOption.val() === 'custom') {
+                    formData.append('delivery_date', $('#delivery_date').val());
+                }
+
+                $.ajax({
+                    url: $addToCartForm.attr('action'),
+                    data: formData,
+                    type: 'post',
+                    dataType: 'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(res) {
+                        if (res.backUrl) {
+                            window.location = res.backUrl;
+                        } else {
+                            location.reload();
+                        }
+                    }
+                });
+            });
+
+            // Ngăn chặn form submit mặc định
+            $addToCartForm.on('submit', function(e) {
+                e.preventDefault();
+            });
+        });
+    });
+</script>

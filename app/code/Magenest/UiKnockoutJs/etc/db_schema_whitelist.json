@@ -1,0 +1,41 @@
+{
+    "quote": {
+        "column": {
+            "delivery_opt": true,
+            "delivery_date": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "delivery_opt": true,
+            "delivery_date": true
+        }
+    },
+    "magenest_promotion": {
+        "column": {
+            "id": true,
+            "title": true,
+            "content": true,
+            "status": true,
+            "group_customer_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGENEST_PROMOTION_GROUP_CSTR_ID_CSTR_GROUP_CSTR_GROUP_ID": true
+        }
+    },
+    "magenest_banner": {
+        "column": {
+            "id": true,
+            "name": true,
+            "title": true,
+            "content": true,
+            "link": true,
+            "image": true,
+            "enable": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

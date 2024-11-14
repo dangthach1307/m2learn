@@ -1,0 +1,27 @@
+<div id="promotion-popup" style="display:none;">
+    <?php if ($promotions = $block->getPromotionByCustomerGroup($block->getCustomerGroupId())): ?>
+        <h2><?php echo $promotions[0]['title']; ?></h2>
+        <div><?php echo $promotions[0]['content']; ?></div>
+    <?php endif; ?>
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
+        var popup = $('#promotion-popup');
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: 'Promotion',
+            buttons: [{
+                text: $.mage.__('Close'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+        modal(options, popup);
+        popup.modal('openModal');
+    });
+</script>

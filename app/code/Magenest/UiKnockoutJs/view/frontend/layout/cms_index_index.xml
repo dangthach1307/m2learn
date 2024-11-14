@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\UiKnockoutJs\Block\Promotion\Popup" name="magenest.promotion" template="Magenest_UiKnockoutJs::promotion_popup.phtml"/>
+            <block class="Magenest\UiKnockoutJs\Block\Frontend\Banner\BannerDisplay" name="magenest_banner_display" template="Magenest_UiKnockoutJs::banner_display.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  ~
+  ~ Copyright © Magento, Inc. All rights reserved.
+  ~ See COPYING.txt for license details.
+  ~
+  ~ Created By: Thach The Dang.
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customer_course" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customer Online Course</label>
+            <tab>magenest_tab</tab>
+            <resource>Magenest_CustomizeAdmin::config_movie</resource>
+            <group id="course_general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Online Course Infomation</label>
+                <field id="fieldname" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Course Access Times</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <frontend_model>Magenest\CustomizeAdmin\Block\Adminhtml\Form\Field\DynamicFieldData</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

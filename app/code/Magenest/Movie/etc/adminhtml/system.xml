@@ -1,0 +1,48 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest_tab" translate="label" sortOrder="10">
+            <label>Magenest</label>
+        </tab>
+        <section id="movies" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Movie</label>
+            <tab>magenest_tab</tab>
+            <resource>Magenest_Movie::config_movie</resource>
+            <group id="movie_general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Movie page settings</label>
+                <field id="text_field" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text field</label>
+                    <comment>This is a test field</comment>
+                </field>
+                <field id="yes_no_field_abcd" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Yes/No field abcd</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_select_field" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Select Field</label>
+                    <source_model>Magenest\Movie\Model\Config\Source\CustomOptions</source_model>
+                </field>
+                <field id="movie_count" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Movie Count</label>
+                    <comment>This field displays the number of rows in the table "magenest_movie".</comment>
+                    <frontend_model>Magenest\Movie\Block\ReadOnlyData</frontend_model>
+                    <backend_model>Magenest\Movie\Model\Config\Backend\Movie\MovieCount</backend_model>
+                </field>
+                <field id="actor_count" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Actors Count</label>
+                    <comment>This field displays the number of rows in the table "magenest_actor" AND this field is only visible if “Custom Select Field” 's value is “show”, read-only.</comment>
+                    <frontend_model>Magenest\Movie\Block\ReadOnlyData</frontend_model>
+                    <backend_model>Magenest\Movie\Model\Config\Backend\Actor\ActorCount</backend_model>
+                    <depends>
+                        <field id="custom_select_field">1</field>
+                    </depends>
+                </field>
+                <field id="reload_page_button" translate="label" type="button" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reload Page</label>
+                    <comment>Click to Reload Page.</comment>
+                    <frontend_model>Magenest\Movie\Block\ReloadButton</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

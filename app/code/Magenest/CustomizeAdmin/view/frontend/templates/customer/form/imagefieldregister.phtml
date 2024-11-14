@@ -1,0 +1,21 @@
+<?= $avatar = $block->getImageUrl(); ?>
+<fieldset class="fieldset create account">
+    <legend class="legend">
+        <span>
+        <?php
+        /* @escapeNotVerified */
+        echo __('Additional Information')
+        ?>
+        </span>
+    </legend>
+
+    <div class="field avatar">
+        <label for="avatar" class="label"><span><?php /* @escapeNotVerified */
+                echo __('Logo Image') ?></span></label>
+        <div class="control">
+            <input type="file" name="avatar" id="avatar" title="<?php /* @escapeNotVerified */
+            echo __('avatar Image') ?>" class="input-text" data-validate="{required:false}">
+        </div>
+    </div>
+
+</fieldset>

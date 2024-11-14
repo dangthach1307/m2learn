@@ -1,0 +1,17 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Header-->
+        <!--        <add id="Magenest_Practices::magenest_practices" title="Magenest" module="Magenest_Movie" sortOrder="20" resource="Magenest_Practices::magenest_practices"/>-->
+        <!-- Section #3: Bai 10-->
+        <add id="Magenest_UiKnockoutJs::bai10" title="Bài 10: Popup Promotion" module="Magenest_UiKnockoutJs"
+             sortOrder="100" parent="Magenest_Practices::magenest_practices" resource="Magenest_UiKnockoutJs::bai10"/>
+        <add id="Magenest_UiKnockoutJs::popup_manager" title="Management Popup Promotions" module="Magenest_UiKnockoutJs"
+             sortOrder="1" parent="Magenest_UiKnockoutJs::bai10" action="bai10/popup/"
+             resource="Magenest_UiKnockoutJs::popup_manager"/>
+        <add id="Magenest_UiKnockoutJs::banner_manager" title="Management Banner" module="Magenest_UiKnockoutJs"
+             sortOrder="1" parent="Magenest_UiKnockoutJs::bai10" action="bai10/banner/"
+             resource="Magenest_UiKnockoutJs::banner_manager"/>
+
+    </menu>
+</config>

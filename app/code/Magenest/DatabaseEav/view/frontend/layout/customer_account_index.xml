@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout/empty_layout.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <block class="Magenest\DatabaseEav\Block\CustomerGroup" name="customer_group"
+                   template="Magenest_DatabaseEav::customer_group.phtml"/>
+        </referenceBlock>
+    </body>
+</layout>

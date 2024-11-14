@@ -1,0 +1,16 @@
+<?php
+$quote = $block->getQuote();
+$deliveryOpt = $quote->getDeliveryOpt();
+$deliveryDate = $quote->getDeliveryDate();
+?>
+
+<div class="delivery-option">
+    <strong><?php echo __('Delivery Option:'); ?></strong> <?php echo $this->escapeHtml($deliveryOpt); ?>
+</div>
+
+<?php if ($deliveryOpt === 'custom'): ?>
+    <div class="delivery-date">
+        <strong><?php echo __('Delivery Date:'); ?></strong> <?php echo $this->escapeHtml($deliveryDate); ?>
+    </div>
+<?php endif; ?>
+

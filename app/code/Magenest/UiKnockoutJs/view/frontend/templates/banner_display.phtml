@@ -1,0 +1,48 @@
+<?php
+/** @var \Magenest\UiKnockoutJs\Block\Frontend\Banner\BannerDisplay $block */
+$banners = $block->getBanners();
+?>
+<div class="banner-container">
+    <?php foreach ($banners as $banner): ?>
+        <div class="banner <?= $banner->getId() % 2 == 0 ? 'banner-right' : 'banner-left' ?>">
+            <a href="<?= $block->escapeUrl($banner->getLink()) ?>">
+                <img src="<?= $block->escapeUrl($block->getImageUrl($banner->getImage())) ?>"
+                     alt="<?= $block->escapeHtml($banner->getTitle()) ?>"
+                     title="<?= $block->escapeHtml($banner->getName()) ?>">
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+<style>
+    .banner-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .banner {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+
+    .banner-left {
+        left: 0;
+    }
+
+    .banner-right {
+        right: 0;
+    }
+
+    .banner img {
+        max-width: 150px;
+        height: auto;
+    }
+
+    /* Adjust main content to not be covered by banners */
+    .page-main {
+        margin: 0 160px; /* Adjust based on banner width */
+    }
+</style>

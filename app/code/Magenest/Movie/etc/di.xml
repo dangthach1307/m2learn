@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- BEGIN For Cart Plugin   -->
+    <type name="Magento\Checkout\Controller\Cart">
+        <plugin name="custom_cart_item_name_plugin" type="Magenest\Movie\Plugin\ItemPlugin" disabled="true"/>
+    </type>
+    <!-- END For Cart Plugin -->
+
+    <!-- BEGIN For Movie Manager   -->
+    <virtualType name="MagenestMovieGridFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter
+                </item>
+                <item name="fulltext" xsi:type="object">
+                    Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MagenestMovieGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">
+                Magenest\Movie\Model\ResourceModel\Movie\Collection
+            </argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MagenestMovieGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie</argument>
+            <argument name="eventPrefix" xsi:type="string">magenest_movie_movie_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">magenest_movie_grid_collection</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_bai1_movie_listing_data_source" xsi:type="string">
+                    Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- END For Movie Manager -->
+
+    <!-- BEGIN For Director Manager   -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_bai1_director_listing_data_source" xsi:type="string">
+                    Magenest\Movie\Model\ResourceModel\Director\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Director\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_director</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director</argument>
+        </arguments>
+    </virtualType>
+    <!-- END For Director Manager -->
+
+    <!-- BEGIN For Actor Manager   -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_bai1_actor_listing_data_source" xsi:type="string">
+                    Magenest\Movie\Model\ResourceModel\Actor\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Actor\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor</argument>
+        </arguments>
+    </virtualType>
+    <!-- END For Actor Manager -->
+
+
+        <preference for="Magento\Framework\UrlInterface" type="Magento\Framework\Url" />
+
+
+</config>
+

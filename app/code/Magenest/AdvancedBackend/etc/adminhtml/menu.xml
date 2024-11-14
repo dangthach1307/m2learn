@@ -1,0 +1,24 @@
+<!--
+  ~
+  ~ Copyright © Magento, Inc. All rights reserved.
+  ~ See COPYING.txt for license details.
+  ~
+  ~ Created By: Thach The Dang.
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Header-->
+<!--        <add id="Magenest_Practices::practices" title="Magenest" module="Magenest_AdvancedBackend" sortOrder="20"-->
+<!--             resource="Magenest_Practices::practices"/>-->
+        <!-- Section #2-->
+        <add id="Magenest_AdvancedBackend::bai6" title="Bài 6: Movie Report" module="Magenest_AdvancedBackend" sortOrder="20"
+             parent="Magenest_Practices::magenest_practices" resource="Magenest_AdvancedBackend::bai6"/>
+        <add id="Magenest_AdvancedBackend::movie_report" title="Management Movies Report" module="Magenest_AdvancedBackend" sortOrder="1"
+             parent="Magenest_AdvancedBackend::bai6" action="bai6/report/" resource="Magenest_AdvancedBackend::movie_report"/>
+
+
+    </menu>
+</config>

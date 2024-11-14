@@ -1,0 +1,107 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">bai1_movie_form.movie_form_data_source</item>
+            <item name="deps" xsi:type="string">bai1_movie_form.movie_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Movie Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">bai1_movie_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Magenest\Movie\Block\Adminhtml\Movie\Edit\Buttons\Back</item>
+            <item name="delete" xsi:type="string">Magenest\Movie\Block\Adminhtml\Movie\Edit\Buttons\Delete</item>
+            <item name="reset" xsi:type="string">Magenest\Movie\Block\Adminhtml\Movie\Edit\Buttons\Reset</item>
+            <item name="save" xsi:type="string">Magenest\Movie\Block\Adminhtml\Movie\Edit\Buttons\Save</item>
+        </item>
+    </argument>
+    <dataSource name="movie_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magenest\Movie\Model\Movie\DataProvider</argument>
+            <argument name="name" xsi:type="string">movie_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">movie_id</argument>
+            <argument name="requestFieldName" xsi:type="string">movie_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Movie Information</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="movie_id" formElement="hidden">
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="name" sortOrder="20" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <label translate="true">Movie Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="rating">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Rating</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="notice" xsi:type="string">Rating must be between 0 and 10</item>
+                    <item name="additionalClasses" xsi:type="string">required-entry validate-number validate-digits</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                    <item name="min" xsi:type="number">0</item>
+                    <item name="max" xsi:type="number">10</item>
+                    <item name="step" xsi:type="number">0.1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="director_name">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magenest\Movie\Model\Config\Source\DirectorOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Director Name</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">director</item>
+                    <item name="dataScope" xsi:type="string">director_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="actor_ids" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magenest\Movie\Model\Config\Source\ActorOptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Select Actors</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">actor_ids</item>
+                    <item name="dataScope" xsi:type="string">actor_ids</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

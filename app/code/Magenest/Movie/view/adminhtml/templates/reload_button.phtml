@@ -1,0 +1,11 @@
+<button type="button" name="reload_button" id="reload_button" class="actions">Reload</button>
+
+<script type="text/javascript">
+        require(["jquery"], function($) {
+            $(document).ready(function($) {
+                $("#reload_button").on("click", function(e){
+                    window.location.reload();
+                })
+            });
+        });
+</script>

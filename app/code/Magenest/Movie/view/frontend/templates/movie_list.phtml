@@ -1,0 +1,34 @@
+<?php
+$movies = $block->getMovies();
+?>
+
+<?php if (count($movies) > 0): ?>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Movie Name</th>
+            <th>Description</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Actors</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($movies as $movie): ?>
+            <tr>
+                <td><?php echo $this->escapeHtml($movie->getName()); ?></td>
+                <td><?php echo $this->escapeHtml($movie->getDescription());?></td>
+                <td><?php echo $this->escapeHtml($movie->getRating());?></td>
+<!--                            Cách 1-->
+                                <td><?php echo $this->escapeHtml($movie->getDirectorName()); ?></td>
+                                <td><?php echo $this->escapeHtml($movie->getActorName()); ?></td>
+<!--                                Cách 2-->
+<!--                <td>--><?php //echo $this->escapeHtml($movie->getData('director_name')) ?><!--</td>-->
+<!--                <td>--><?php //echo $this->escapeHtml($movie->getData('actor_name')) ?><!--</td>-->
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>No movies found.</p>
+<?php endif; ?>

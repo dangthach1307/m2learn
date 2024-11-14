@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+  ~
+  ~ Copyright © Magento, Inc. All rights reserved.
+  ~ See COPYING.txt for license details.
+  ~
+  ~ Created By: Thach The Dang.
+  ~
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\General">
+        <plugin name="custom_product_date_plugin"
+                type="Magenest\CustomizeAdmin\Plugin\Product\TimeFieldPlugin"
+                sortOrder="1"/>
+    </type>
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="customTab" xsi:type="array">
+                    <item name="class" xsi:type="string">Magenest\CustomizeAdmin\Ui\DataProvider\Product\Form\Modifier\MagenestCourseFile</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magenest\CustomizeAdmin\Ui\DataProvider\Product\Form\Modifier\MagenestCourseFile">
+        <arguments>
+            <argument name="locator" xsi:type="object">Magento\Catalog\Model\Locator\LocatorInterface</argument>
+            <argument name="courseFactory" xsi:type="object">Magenest\CustomizeAdmin\Model\MagenestCourseFactory</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface</argument>
+        </arguments>
+    </type>
+</config>

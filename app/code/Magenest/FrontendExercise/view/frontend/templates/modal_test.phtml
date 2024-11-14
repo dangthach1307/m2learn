@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright © Magento, Inc. All rights reserved.
+  ~ See COPYING.txt for license details.
+  ~
+  ~ Created By: Thach The Dang.
+  ~ Modified By: [Your Name]
+  -->
+
+<div class="modal-test-container">
+    <!-- Button 1 -->
+    <button type="button" class="action-primary" data-trigger="normal-alert">
+        <?= $block->escapeHtml(__('Normal Alert')) ?>
+    </button>
+
+    <!-- Button 2 -->
+    <button type="button" class="action-primary" data-trigger="magento-alert">
+        <?= $block->escapeHtml(__('Open Magento Alert Modal')) ?>
+    </button>
+    <div id="magento-alert-content" style="display:none;">
+        <div class="modal-body-content">
+            <h2><?= $block->escapeHtml(__('Title')) ?></h2>
+            <p><?= $block->escapeHtml(__('Content')) ?></p>
+        </div>
+    </div>
+
+
+
+    <!-- Button 3 -->
+    <button type="button" class="action-primary" data-trigger="custom-login">
+        <?= $block->escapeHtml(__('Open Custom Login Modal')) ?>
+    </button>
+    <div id="custom-login-content" style="display:none;">
+        <div class="modal-body-content">
+            <h2><?= $block->escapeHtml(__('Custom Login')) ?></h2>
+            <p><?= $block->escapeHtml(__('Please login using your credentials')) ?></p>
+            <form class="form form-login" data-role="custom-login-form" action="<?= $block->escapeUrl($block->getUrl('customer/account/loginPost')) ?>" method="post" id="custom-login-form">
+                <?= $block->getBlockHtml('formkey') ?>
+                <fieldset class="fieldset login" data-hasrequired="* Required Fields">
+                    <div class="field email required">
+                        <label class="label" for="custom-email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                        <div class="control">
+                            <input name="login[username]" id="custom-email" type="email" class="input-text" data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                    <div class="field password required">
+                        <label for="custom-pass" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+                        <div class="control">
+                            <input name="login[password]" type="password" class="input-text" id="custom-pass" data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="action login primary" name="send" id="custom-send2">
+                                <span><?= $block->escapeHtml(__('Sign In')) ?></span>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        ".modal-test-container": {
+            "Magenest_FrontendExercise/js/custom-popup": {}
+        }
+    }
+</script>

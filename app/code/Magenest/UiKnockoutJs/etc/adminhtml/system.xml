@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="background_color" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Background Color Options</label>
+            <tab>magenest_tab</tab>
+            <resource>Magenest_UiKnockoutJs::config</resource>
+            <group id="color_select" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+              <field id="color_option" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color option</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <frontend_model>Magenest\UiKnockoutJs\Block\Adminhtml\Form\Field\DynamicData</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

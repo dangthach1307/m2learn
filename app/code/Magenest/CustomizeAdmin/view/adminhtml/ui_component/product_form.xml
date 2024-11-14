@@ -1,0 +1,110 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+<!--    <fieldset name="magenest_course" sortOrder="1">-->
+<!--        <settings>-->
+<!--            <label>Course Info</label>-->
+<!--            <collapsible>true</collapsible>-->
+<!--            <opened>true</opened>-->
+<!--            <dataScope>magenest_course</dataScope>-->
+<!--        </settings>-->
+<!--        <field name="start_time" formElement="date" component="Magenest_CustomizeAdmin/js/calendar-mixin">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="source" xsi:type="string">start_time</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <settings>-->
+<!--                <dataType>timestamp</dataType>-->
+<!--                <label translate="true">Start Date</label>-->
+<!--                <visible>true</visible>-->
+<!--                <dataScope>start_time</dataScope>-->
+<!--            </settings>-->
+<!--        </field>-->
+<!--        <field name="end_time" formElement="date" component="Magenest_CustomizeAdmin/js/calendar-mixin">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="source" xsi:type="string">end_time</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <settings>-->
+<!--                <dataType>timestamp</dataType>-->
+<!--                <label translate="true">End Date</label>-->
+<!--                <visible>true</visible>-->
+<!--                <dataScope>end_time</dataScope>-->
+<!--            </settings>-->
+<!--        </field>-->
+<!--        <dynamicRows name="course_materials">-->
+<!--            <settings>-->
+<!--                <addButtonLabel translate="true">Add Record</addButtonLabel>-->
+<!--                <additionalClasses>-->
+<!--                    <class name="admin__field-wide">true</class>-->
+<!--                </additionalClasses>-->
+<!--                <dataScope>data.magenest_course</dataScope>-->
+<!--                <componentType>dynamicRows</componentType>-->
+<!--                <recordTemplate>record</recordTemplate>-->
+<!--            </settings>-->
+<!--            <container name="record" component="Magento_Ui/js/dynamic-rows/record">-->
+<!--                <argument name="data" xsi:type="array">-->
+<!--                    <item name="config" xsi:type="array">-->
+<!--                        <item name="isTemplate" xsi:type="boolean">true</item>-->
+<!--                        <item name="is_collection" xsi:type="boolean">true</item>-->
+<!--                        <item name="componentType" xsi:type="string">container</item>-->
+<!--                    </item>-->
+<!--                </argument>-->
+<!--                <field name="course_title" formElement="input">-->
+<!--                    <argument name="data" xsi:type="array">-->
+<!--                        <item name="config" xsi:type="array">-->
+<!--                            <item name="fit" xsi:type="boolean">false</item>-->
+<!--                        </item>-->
+<!--                    </argument>-->
+<!--                    <settings>-->
+<!--                        <validation>-->
+<!--                            <rule name="required-entry" xsi:type="boolean">true</rule>-->
+<!--                        </validation>-->
+<!--                        <dataType>text</dataType>-->
+<!--                        <label>Course Title</label>-->
+<!--                        <dataScope>course_title</dataScope>-->
+<!--                    </settings>-->
+<!--                </field>-->
+
+<!--                <field name="course_file" formElement="fileUploader">-->
+<!--                    <argument name="data" xsi:type="array">-->
+<!--                        <item name="config" xsi:type="array">-->
+<!--                            <item name="dataType" xsi:type="string">string</item>-->
+<!--                            <item name="source" xsi:type="string">course_file</item>-->
+<!--                            <item name="label" xsi:type="string" translate="true">Course File</item>-->
+<!--                            <item name="visible" xsi:type="boolean">true</item>-->
+<!--                            <item name="formElement" xsi:type="string">fileUploader</item>-->
+<!--                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
+<!--                            <item name="previewTmpl" xsi:type="string">Magenest_CustomizeAdmin/preview</item>-->
+<!--                            <item name="required" xsi:type="boolean">false</item>-->
+<!--                            <item name="sortOrder" xsi:type="number">40</item>-->
+<!--                            <item name="uploaderConfig" xsi:type="array">-->
+<!--                                <item name="url" xsi:type="url" path="bai8/export/upload"/>-->
+<!--                            </item>-->
+<!--                            <item name="indexField" xsi:type="string">index</item>-->
+<!--                        </item>-->
+<!--                    </argument>-->
+<!--                </field>-->
+
+
+<!--                <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">-->
+<!--                    <argument name="data" xsi:type="array">-->
+<!--                        <item name="config" xsi:type="array">-->
+<!--                            <item name="fit" xsi:type="boolean">false</item>-->
+<!--                        </item>-->
+<!--                    </argument>-->
+<!--                    <settings>-->
+<!--                        <additionalClasses>-->
+<!--                            <class name="some-class">true</class>-->
+<!--                        </additionalClasses>-->
+<!--                        <dataType>text</dataType>-->
+<!--                        <label>Actions</label>-->
+<!--                        <componentType>actionDelete</componentType>-->
+<!--                    </settings>-->
+<!--                </actionDelete>-->
+<!--            </container>-->
+<!--        </dynamicRows>-->
+<!--    </fieldset>-->
+</form>

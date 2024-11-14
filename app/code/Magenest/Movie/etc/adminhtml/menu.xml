@@ -1,0 +1,12 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!-- Header-->
+        <add id="Magenest_Practices::magenest_practices" title="Magenest" module="Magenest_Movie" sortOrder="20" resource="Magenest_Practices::magenest_practices"/>
+        <!-- Section #1: Bai 1-->
+        <add id="Magenest_Movie::bai1" title="Bài 1: Database Movie" module="Magenest_Movie" sortOrder="10" parent="Magenest_Practices::magenest_practices" resource="Magenest_Movie::bai1"/>
+        <add id="Magenest_Movie::movie_manager" title="Management Movies" module="Magenest_Movie" sortOrder="1" parent="Magenest_Movie::bai1" action="bai1/movie/" resource="Magenest_Movie::movie_manager"/>
+        <add id="Magenest_Movie::director_manager" title="Management Directors" module="Magenest_Movie" sortOrder="2" parent="Magenest_Movie::bai1" action="bai1/director/" resource="Magenest_Movie::director_manager"/>
+        <add id="Magenest_Movie::actor_manager" title="Management Actors" module="Magenest_Movie" sortOrder="3" parent="Magenest_Movie::bai1" action="bai1/actor/" resource="Magenest_Movie::actor_manager"/>
+
+    </menu>
+</config>

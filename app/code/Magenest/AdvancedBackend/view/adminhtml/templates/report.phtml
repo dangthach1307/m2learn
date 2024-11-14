@@ -1,0 +1,53 @@
+<div class="page-title">
+    <h1><?= __('Request Report') ?></h1>
+</div>
+
+<div class="admin__page-section" style="display: flex;">
+    <div class="admin__page-left" style="flex: 1; padding-right: 20px;">
+        <div class="admin__data-grid">
+            <h2><?= __('Total Request Today') ?></h2>
+            <p><?= __('No request has been made today') ?></p>
+
+            <h3><?= __('Module Information') ?></h3>
+            <p><?= __('Total Modules: ') . $block->getTotalModules()['total'] ?></p>
+            <p><?= __('Magento Modules: ') . $block->getTotalModules()['magento'] ?></p>
+            <p><?= __('Other Vendor Modules: ') . $block->getTotalModules()['others'] ?></p>
+        </div>
+    </div>
+
+    <div class="admin__page-right" style="flex: 1;">
+        <div class="admin__data-grid">
+            <h2><?= __('Detail') ?></h2>
+            <table class="data-grid" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px;"><?= __('Request Type') ?></th>
+                    <th style="border: 1px solid #ddd; padding: 8px;"><?= __('Count') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= __('Customer Requests:') ?></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= $block->getTotalCustomers() ?></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= __('Product Requests:') ?></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= $block->getTotalProducts() ?></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= __('Order Requests:') ?></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= $block->getTotalOrders() ?></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= __('Invoice Requests:') ?></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= $block->getTotalInvoices() ?></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= __('Creditmemo Requests:') ?></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><?= $block->getTotalCreditmemos() ?></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

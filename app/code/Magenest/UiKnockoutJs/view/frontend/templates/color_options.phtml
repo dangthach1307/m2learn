@@ -1,0 +1,99 @@
+<!--<div class="color-options" style="margin: 10px;" data-mage-init='{"colorSwitcher":{}}'>-->
+<!--    <label>Select a color:</label>-->
+<!--    <div class="color-switcher">-->
+<?php
+//            $colorOptions = $block->getColorOptions();
+//            if (!empty($colorOptions)) {
+//                $colors = json_decode($colorOptions, true);
+//
+//                if (is_array($colors)) {
+//                    foreach ($colors as $colorData) {
+//                        if (isset($colorData['color_name']) && isset($colorData['color_code'])) {
+//                            $colorName = htmlspecialchars($colorData['color_name']);
+//                            $colorCode = htmlspecialchars($colorData['color_code']);
+//                            echo '<button type="button" class="color-option" style="background-color: ' . $colorCode . ';" onclick="changeColor(\'' . $colorCode . '\')">' . $colorName . '</button>';
+//                        }
+//                    }
+//                } else {
+//                    echo '<p>Invalid color options format.</p>';
+//                }
+//            } else {
+//                echo '<p>No color options available.</p>';
+//            }
+?>
+<!--    </div>-->
+<!--</div>-->
+<!---->
+<!--<script>-->
+<!--    function changeColor(colorCode) {-->
+<!--        console.log('Selected Color Code:', colorCode);-->
+<!--        document.body.style.backgroundColor = colorCode; // Thay đổi màu nền-->
+<!--    }-->
+<!--</script>-->
+<li class="customer-welcome">
+    <span class="customer-name"
+          role="link"
+          tabindex="0"
+          data-mage-init='{"dropdown":{}}'
+          data-toggle="dropdown"
+          data-trigger-keypress-button="true"
+          data-bind="scope: 'customer'">
+         <label><?= __('Change Background Color ') ?></label>
+        <button type="button"
+                class="action switch"
+                tabindex="-1"
+                data-action="customer-menu-toggle">
+            <span><?= $block->escapeHtml(__('Change')) ?></span>
+        </button>
+    </span>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <div class="customer-menu" data-target="dropdown">
+        <?php if ($block->getChildHtml()) : ?>
+            <?= $block->getChildHtml() ?>
+        <?php endif; ?>
+        <?php
+        $colorOptions = $block->getColorOptions();
+        $colors = json_decode($colorOptions, true);
+
+
+        if (is_array($colors) && !empty($colors)) : ?>
+            <ul class="color-options">
+                <?php foreach ($colors as $colorData) :
+                    if (isset($colorData['color_name'], $colorData['color_code'])) :
+                        $colorName = htmlspecialchars($colorData['color_name']);
+                        $colorCode = htmlspecialchars($colorData['color_code']); ?>
+                        <li>
+                            <a href="#" class="color-option" onclick="changeColor('<?= $colorCode; ?>'); return false;">
+                                <?= $colorName; ?>
+                            </a>
+                        </li>
+                    <?php endif;
+                endforeach; ?>
+            </ul>
+        <?php else : ?>
+            <p><?= __('No color options available.') ?></p>
+        <?php endif; ?>
+    </div>
+</li>
+
+<script>
+    function changeColor(colorCode) {
+        console.log('Selected Color Code:', colorCode);
+        document.body.style.backgroundColor = colorCode; // Change the background color
+    }
+</script>
+

@@ -1,0 +1,23 @@
+<!--@subject {{trans "Did you forget something?"}} @-->
+{{template config_path="design/email/header_template"}}
+<table style="float:left; margin-right: 10px" class="fue-abc-items">
+    <tr>
+        <td>
+            <div class="greeting">Hi {{var customer_name}},</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{{trans "Product Name:"}} <strong>{{var product_name}}</strong></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{{trans "Course Link:"}} <a href="{{var course_link}}">{{var course_link}}</a></div>
+        </td>
+    </tr>
+    <tr>
+        <td><div>{{trans "Course File:"}} <a href="{{var course_file}}">{{var course_file}}</a></div></td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

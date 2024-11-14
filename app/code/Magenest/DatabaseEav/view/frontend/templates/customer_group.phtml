@@ -1,0 +1,11 @@
+<?php
+/** @var \Magenest\DatabaseEav\Block\CustomerGroup $block */
+$groupName = $block->getCustomerGroup();
+?>
+<div class="customer-group">
+    <?php if ($groupName): ?>
+        <p>Customer Group: <?= $groupName ?></p>
+    <?php else: ?>
+        <p>You are not logged in.</p>
+    <?php endif; ?>
+</div>
