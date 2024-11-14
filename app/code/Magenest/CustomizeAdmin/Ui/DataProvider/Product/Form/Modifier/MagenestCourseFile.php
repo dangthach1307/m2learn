@@ -10,7 +10,8 @@
 
 namespace Magenest\CustomizeAdmin\Ui\DataProvider\Product\Form\Modifier;
 
-
+use Magento\Framework\Filesystem;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
@@ -36,15 +37,22 @@ class MagenestCourseFile extends AbstractModifier
     private $locator;
     private $courseFactory;
     protected  $arrayManager;
+    protected $filesystem;
+    protected $directoryList;
 
     public function __construct(
         LocatorInterface $locator,
         \Magenest\CustomizeAdmin\Model\MagenestCourseFactory $courseFactory,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+        Filesystem $filesystem,
+        DirectoryList $directoryList
     ) {
         $this->locator = $locator;
         $this->courseFactory = $courseFactory;
         $this->storeManager = $storeManager;
+        $this->filesystem=$filesystem;
+        $this->directoryList=$directoryList;
+
     }
     protected function getFileUrl($file)
     {
@@ -53,6 +61,20 @@ class MagenestCourseFile extends AbstractModifier
         );
         // Adjust the path according to your file storage structure
         return $baseUrl . 'course/file/' . ltrim($file, '/');
+    }
+    protected function getFileSize($file)
+    {
+        try {
+            $mediaDirectory = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
+            $filePath = 'catalog/product/file/' . ltrim($file, '/');
+
+            if ($mediaDirectory->isFile($filePath)) {
+                return $mediaDirectory->stat($filePath)['size'];
+            }
+        } catch (\Exception $e) {
+            return 0;
+        }
+        return 0;
     }
     public function modifyData(array $data)
     {
@@ -72,12 +94,12 @@ class MagenestCourseFile extends AbstractModifier
                     [
                         'name' => basename($course->getCourseFile()),
                         'file' => $course->getCourseFile(),
-                        'size' => 0, // You might want to get actual file size if needed
+                        'size' => $this->getFileSize($course->getCourseFile()),
                         'url' => $this->getFileUrl($course->getCourseFile()),
                         'type' => 'file'
                     ]
                 ],
-                'is_delete' => 0, // You can add logic to mark the course for deletion if needed
+                'is_delete' => 0,
             ];
         }
 //

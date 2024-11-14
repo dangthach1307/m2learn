@@ -30,6 +30,8 @@
             <argument name="locator" xsi:type="object">Magento\Catalog\Model\Locator\LocatorInterface</argument>
             <argument name="courseFactory" xsi:type="object">Magenest\CustomizeAdmin\Model\MagenestCourseFactory</argument>
             <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface</argument>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem</argument>
+            <argument name="directoryList" xsi:type="object">Magento\Framework\App\Filesystem\DirectoryList</argument>
         </arguments>
     </type>
 </config>
